@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>lemon的blog</title>
+  <title>Category: hexo | lemon的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="lemon的blog">
-<meta property="og:url" content="http://lemon-zf.github.io/index.html">
+<meta property="og:url" content="http://lemon-zf.github.io/categories/hexo/index.html">
 <meta property="og:site_name" content="lemon的blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lemon的blog">
@@ -199,86 +199,56 @@
 
       <div class="body-wrap">
   
-    <article id="post-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/08/13/Hexo/" class="article-date">
-  	<time datetime="2016-08-13T05:47:43.000Z" itemprop="datePublished">2016-08-13</time>
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/08/13/Hexo/" class="archive-article-date">
+  	<time datetime="2016-08-13T05:47:43.000Z" itemprop="datePublished">Aug 13</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/13/Hexo/">Hexo搭建博客并实现多终端同步管理</a>
+      <a class="archive-article-title" href="/2016/08/13/Hexo/">Hexo搭建博客并实现多终端同步管理</a>
     </h1>
   
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>【hello，hexo！】终于搞定了hexo博客多终端同步管理了，现整理出过程分享出来，同时自己也再顺一遍。如果有错误欢迎指正~。</p>
-<p>软件与准备</p>
-<p>1.node.js node.js中文网<br>2.git git官网 如果下载速度过慢，请移步百度下载，只是版本差异<br>3.文本编辑器，个人用的sublime text（其实用记事本也可以）<br>4.注册github帐号</p>
-<p>安装node与git</p>
-<p>上面的准备工作都完成后就可以进行软件安装了。</p>
-<p>安装node 。直接双击下载下来的额msi文件，一路下一步就ok了，安装完之后调出命令行或者node命令输入终端，输入node -v看到版本信息就表明安装成功了。<br>安装git 。直接双击下载下来的git安装程序，同node安装，安装完之后右键发现多了两个Git GUI Here 、Git Bash Here，点击后者，然后输入git –version出现版本信息就表明安装成功了。<br>选装cnpm。由于npm速度有时候令人堪忧，所以建议安装淘宝源的cnpm，在git bash中输入下面整段</p>
-<p>1<br>2<br>3<br>4<br>alias cnpm=”npm –registry=<a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a> \<br>    –cache=$HOME/.npm/.cache/cnpm \<br>    –disturl=<a href="https://npm.taobao.org/dist">https://npm.taobao.org/dist</a> \<br>    –userconfig=$HOME/.cnpmrc”<br>安装完之后验证，输入：cnpm info express,若出现一大堆信息则表明成功了</p>
-<p>安装hexo</p>
-<p>全局安装。在git bash 下输入：cnpm install -g hexo-cli<br>安装完之后，输入hexo -v，出现版本信息则表明安装成功<br>创建hexo项目。在g盘（你可以在任意盘，这里只是举个栗子^_^）新建一个文件夹hexo。进入到此文件夹右键点git bash，然后输入hexo init,走完命令行之后输入：cnpm install<br>安装完之后可以输入：hexo server启动本地服务器，在浏览器中输入：<a href="http://localhost:4000/">http://localhost:4000/</a> 来访问hexo博客。<br>到此，本地搭建已经成功。<br>更换主题</p>
-<p>这里我就不细说更换主题的内容了。太长了，有空单聊。</p>
-<p>创建github pages与配置ssh</p>
-<p>创建博客仓库。登陆到github上新建一个仓库，名称为：你的用户名.github.io<br>本地生成ssh密钥。git bash下输入ssh-keygen -t rsa -C “你的邮箱地址”<br>上传公钥串。在你的电脑C：\ Users\你的计算机用户名.ssh目录下打开刚刚生成的id_rsa.pub，复制里面的内容。然后在这里<a href="https://github.com/settings/keys">https://github.com/settings/keys</a> 新建一个ssh key，title随便写，把公钥串粘贴到文本框，保存即可。<br>将本地博客同步到github上</p>
-<p>安装必要插件。进入到本地的hexo目录，在git bash下分别输入cnpm install hexo -server –save 和cnpm install hexo-deployer-git –save<br>编辑博客配置文件：_config.yml,具体参考<a href="https://hexo.io/zh-cn/docs/configuration.html">https://hexo.io/zh-cn/docs/configuration.html</a> （最重要的是配置deploy）<br>1<br>2<br>3<br>4<br>deploy:<br>  type: git<br>  repo: git@github.com:你的github用户名/你的github用户名.github.io.git<br>  branch: master<br>重新部署。在git bash中依次执行 hexo clean（清除旧的public生成文件）hexo generate（或者hexo g 生成静态文件）hexo server（本地预览）hexo deploy（部署到github上，第一次会有弹框提示，输入yes，点击ok）<br>提交成功后就可以访问了，比如我的是：<a href="http://eryouhao.github.io/">http://eryouhao.github.io/</a><br>至此，博客搭建结束！可以稍微休息下，庆祝一下了~.<br>多PC同步管理博客</p>
-<p>休息结束，下面干货来了。很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的。下面就介绍一下用github来备份博客并同步博客。</p>
-<p>A电脑备份博客内容到github</p>
-<p>配置.gitignore文件。进入博客目录文件夹下，找到此文件，用sublime text 打开，在最后增加两行内容/.deploy_git和/public<br>初始化仓库。在博客根目录下，在git bash下依次执行git init和git remote add origin <server> 为远程仓库地址。<br>同步到远程仓库。gitbash下依次执行以下命令<br>1<br>2<br>3<br>git add . #添加目录下所有文件<br>git commit -m “更新说明” #提交并添加更新说明<br>git push -u origin master #推送更新到远程仓库<br>B电脑拉下远程仓库文件</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/hexo/">hexo</a><a class="article-category-link" href="/categories/hexo/github/">github</a><a class="article-category-link" href="/categories/hexo/github/blog/">blog</a>
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/08/13/Hexo/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
 </article>
-
-
-
-
-
-
-
-
-
   
   
+    </div></section>
+  
+
+    
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -302,11 +272,11 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		root: /
 	}

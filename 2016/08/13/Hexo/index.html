@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hexo搭建博客并实现多终端同步管理 | Lemon-IT.CC ,不一样的味道</title>
+  <title>Hexo搭建博客并实现多终端同步管理 | lemon的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="【hello，hexo！】终于搞定了hexo博客多终端同步管理了，现整理出过程分享出来，同时自己也再顺一遍。如果有错误欢迎指正~。
 软件与准备
@@ -13,14 +13,14 @@
 上面的准备工作都完成后就可以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo搭建博客并实现多终端同步管理">
-<meta property="og:url" content="http://yoursite.com/2016/08/16/Hexo搭建博客并实现多终端同步管理/index.html">
-<meta property="og:site_name" content="Lemon-IT.CC ,不一样的味道">
+<meta property="og:url" content="http://lemon-zf.github.io/2016/08/13/Hexo/index.html">
+<meta property="og:site_name" content="lemon的blog">
 <meta property="og:description" content="【hello，hexo！】终于搞定了hexo博客多终端同步管理了，现整理出过程分享出来，同时自己也再顺一遍。如果有错误欢迎指正~。
 软件与准备
 1.node.js node.js中文网2.git git官网 如果下载速度过慢，请移步百度下载，只是版本差异3.文本编辑器，个人用的sublime text（其实用记事本也可以）4.注册github帐号
 安装node与git
 上面的准备工作都完成后就可以">
-<meta property="og:updated_time" content="2016-08-16T05:48:37.464Z">
+<meta property="og:updated_time" content="2016-08-16T10:08:51.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo搭建博客并实现多终端同步管理">
 <meta name="twitter:description" content="【hello，hexo！】终于搞定了hexo博客多终端同步管理了，现整理出过程分享出来，同时自己也再顺一遍。如果有错误欢迎指正~。
@@ -29,7 +29,7 @@
 安装node与git
 上面的准备工作都完成后就可以">
   
-    <link rel="alternative" href="/atom.xml" title="Lemon-IT.CC ,不一样的味道" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="lemon的blog" type="application/atom+xml">
   
   
     <link rel="icon" href="//favicon.png">
@@ -45,7 +45,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="0" class="js-avatar">
+			<img lazy-src="/null" class="js-avatar">
 			
 		</a>
 
@@ -107,18 +107,20 @@
 				        
 							<li><a href="/archives">所有文章</a></li>
 				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
 						</ul>
 					</nav>
 					<nav class="header-nav">
 						<div class="social">
 							
-								<a class="github" target="_blank" href="#" title="github">github</a>
+								<a class="github" target="_blank" href="https://github.com/lemon-zf" title="github">github</a>
 					        
 								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
 					        
-								<a class="rss" target="_blank" href="#" title="rss">rss</a>
-					        
 								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:zhang91026@gmail.com" title="mail">mail</a>
 					        
 						</div>
 					</nav>
@@ -127,7 +129,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
 					</div>
 				</section>
 				
@@ -175,7 +177,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				
-					<img lazy-src="0" class="js-avatar">
+					<img lazy-src="/null" class="js-avatar">
 				
 			</div>
 			<hgroup>
@@ -189,19 +191,21 @@
 		        
 					<li><a href="/archives">所有文章</a></li>
 		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
 		        <div class="clearfix"></div>
 				</ul>
 			</nav>
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github">github</a>
+						<a class="github" target="_blank" href="https://github.com/lemon-zf" title="github">github</a>
 			        
 						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
-			        
 						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:zhang91026@gmail.com" title="mail">mail</a>
 			        
 				</div>
 			</nav>
@@ -209,11 +213,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Hexo搭建博客并实现多终端同步管理" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/16/Hexo搭建博客并实现多终端同步管理/" class="article-date">
-  	<time datetime="2016-08-16T05:47:43.000Z" itemprop="datePublished">2016-08-16</time>
+      <a href="/2016/08/13/Hexo/" class="article-date">
+  	<time datetime="2016-08-13T05:47:43.000Z" itemprop="datePublished">2016-08-13</time>
 </a>
     </div>
   
@@ -234,7 +238,15 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+	</div>
+
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/hexo/">hexo</a><a class="article-category-link" href="/categories/hexo/github/">github</a><a class="article-category-link" href="/categories/hexo/github/blog/">blog</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -258,6 +270,7 @@
 <p>休息结束，下面干货来了。很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的。下面就介绍一下用github来备份博客并同步博客。</p>
 <p>A电脑备份博客内容到github</p>
 <p>配置.gitignore文件。进入博客目录文件夹下，找到此文件，用sublime text 打开，在最后增加两行内容/.deploy_git和/public<br>初始化仓库。在博客根目录下，在git bash下依次执行git init和git remote add origin <server> 为远程仓库地址。<br>同步到远程仓库。gitbash下依次执行以下命令<br>1<br>2<br>3<br>git add . #添加目录下所有文件<br>git commit -m “更新说明” #提交并添加更新说明<br>git push -u origin master #推送更新到远程仓库<br>B电脑拉下远程仓库文件</server></p>
+<a id="more"></a>
 <p>在B电脑上同样先安装好node、git、ssh、hexo，然后建好hexo文件夹，安装好插件，（然后选做：将备份到远程仓库的文件及文件夹删除），然后执行以下命令：</p>
 <p>1<br>2<br>3<br>4<br>git init<br>git remote add origin <server><br>git fetch –all<br>git reset –hard origin/master<br>发布博客后同步<br>在B电脑发布完博客之后，记得将博客备份同步到远程仓库<br>执行以下命令：</server></p>
 <p>1<br>2<br>3<br>4<br>git add .</p>
@@ -274,16 +287,6 @@
   </div>
   
     
-<nav id="article-nav">
-  
-  
-    <a href="/2016/08/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
   
 </article>
 
@@ -313,7 +316,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Hexo搭建博客并实现多终端同步管理" data-title="Hexo搭建博客并实现多终端同步管理" data-url="http://yoursite.com/2016/08/16/Hexo搭建博客并实现多终端同步管理/"></div>
+	<div class="ds-thread" data-thread-key="Hexo" data-title="Hexo搭建博客并实现多终端同步管理" data-url="http://lemon-zf.github.io/2016/08/13/Hexo/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
