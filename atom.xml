@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>IT-LEMON的博客</title>
+  <subtitle>热爱coding的小码农</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://it-lemon.cc/"/>
+  <updated>2016-08-16T10:08:51.237Z</updated>
+  <id>http://it-lemon.cc/</id>
+  
+  <author>
+    <name>Lemon</name>
+    <email>zhang91026@gmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo搭建博客并实现多终端同步管理</title>
+    <link href="http://it-lemon.cc/2016/08/13/Hexo/"/>
+    <id>http://it-lemon.cc/2016/08/13/Hexo/</id>
+    <published>2016-08-13T05:47:43.000Z</published>
+    <updated>2016-08-16T10:08:51.237Z</updated>
+    
+    <content type="html"><![CDATA[<p>【hello，hexo！】终于搞定了hexo博客多终端同步管理了，现整理出过程分享出来，同时自己也再顺一遍。如果有错误欢迎指正~。</p>
+<p>软件与准备</p>
+<p>1.node.js node.js中文网<br>2.git git官网 如果下载速度过慢，请移步百度下载，只是版本差异<br>3.文本编辑器，个人用的sublime text（其实用记事本也可以）<br>4.注册github帐号</p>
+<p>安装node与git</p>
+<p>上面的准备工作都完成后就可以进行软件安装了。</p>
+<p>安装node 。直接双击下载下来的额msi文件，一路下一步就ok了，安装完之后调出命令行或者node命令输入终端，输入node -v看到版本信息就表明安装成功了。<br>安装git 。直接双击下载下来的git安装程序，同node安装，安装完之后右键发现多了两个Git GUI Here 、Git Bash Here，点击后者，然后输入git –version出现版本信息就表明安装成功了。<br>选装cnpm。由于npm速度有时候令人堪忧，所以建议安装淘宝源的cnpm，在git bash中输入下面整段</p>
+<p>1<br>2<br>3<br>4<br>alias cnpm=”npm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a> \<br>    –cache=$HOME/.npm/.cache/cnpm \<br>    –disturl=<a href="https://npm.taobao.org/dist" target="_blank" rel="external">https://npm.taobao.org/dist</a> \<br>    –userconfig=$HOME/.cnpmrc”<br>安装完之后验证，输入：cnpm info express,若出现一大堆信息则表明成功了</p>
+<p>安装hexo</p>
+<p>全局安装。在git bash 下输入：cnpm install -g hexo-cli<br>安装完之后，输入hexo -v，出现版本信息则表明安装成功<br>创建hexo项目。在g盘（你可以在任意盘，这里只是举个栗子^_^）新建一个文件夹hexo。进入到此文件夹右键点git bash，然后输入hexo init,走完命令行之后输入：cnpm install<br>安装完之后可以输入：hexo server启动本地服务器，在浏览器中输入：<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 来访问hexo博客。<br>到此，本地搭建已经成功。<br>更换主题</p>
+<p>这里我就不细说更换主题的内容了。太长了，有空单聊。</p>
+<p>创建github pages与配置ssh</p>
+<p>创建博客仓库。登陆到github上新建一个仓库，名称为：你的用户名.github.io<br>本地生成ssh密钥。git bash下输入ssh-keygen -t rsa -C “你的邮箱地址”<br>上传公钥串。在你的电脑C：\ Users\你的计算机用户名.ssh目录下打开刚刚生成的id_rsa.pub，复制里面的内容。然后在这里<a href="https://github.com/settings/keys" target="_blank" rel="external">https://github.com/settings/keys</a> 新建一个ssh key，title随便写，把公钥串粘贴到文本框，保存即可。<br>将本地博客同步到github上</p>
+<p>安装必要插件。进入到本地的hexo目录，在git bash下分别输入cnpm install hexo -server –save 和cnpm install hexo-deployer-git –save<br>编辑博客配置文件：_config.yml,具体参考<a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/configuration.html</a> （最重要的是配置deploy）<br>1<br>2<br>3<br>4<br>deploy:<br>  type: git<br>  repo: git@github.com:你的github用户名/你的github用户名.github.io.git<br>  branch: master<br>重新部署。在git bash中依次执行 hexo clean（清除旧的public生成文件）hexo generate（或者hexo g 生成静态文件）hexo server（本地预览）hexo deploy（部署到github上，第一次会有弹框提示，输入yes，点击ok）<br>提交成功后就可以访问了，比如我的是：<a href="http://eryouhao.github.io/" target="_blank" rel="external">http://eryouhao.github.io/</a><br>至此，博客搭建结束！可以稍微休息下，庆祝一下了~.<br>多PC同步管理博客</p>
+<p>休息结束，下面干货来了。很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的。下面就介绍一下用github来备份博客并同步博客。</p>
+<p>A电脑备份博客内容到github</p>
+<p>配置.gitignore文件。进入博客目录文件夹下，找到此文件，用sublime text 打开，在最后增加两行内容/.deploy_git和/public<br>初始化仓库。在博客根目录下，在git bash下依次执行git init和git remote add origin <server> 为远程仓库地址。<br>同步到远程仓库。gitbash下依次执行以下命令<br>1<br>2<br>3<br>git add . #添加目录下所有文件<br>git commit -m “更新说明” #提交并添加更新说明<br>git push -u origin master #推送更新到远程仓库<br>B电脑拉下远程仓库文件</server></p>
+<a id="more"></a>
+<p>在B电脑上同样先安装好node、git、ssh、hexo，然后建好hexo文件夹，安装好插件，（然后选做：将备份到远程仓库的文件及文件夹删除），然后执行以下命令：</p>
+<p>1<br>2<br>3<br>4<br>git init<br>git remote add origin <server><br>git fetch –all<br>git reset –hard origin/master<br>发布博客后同步<br>在B电脑发布完博客之后，记得将博客备份同步到远程仓库<br>执行以下命令：</server></p>
+<p>1<br>2<br>3<br>4<br>git add .</p>
+<p>#可以用git master 查看更改内容<br>git commit -m “更新信息”<br>git push -u origin master #以后每次提交可以直接git push<br>平时同步管理</p>
+<p>每次想写博客时，先执行：git pull进行同步更新。发布完文章后同样按照上面的 发布博客后同步 同步到远程仓库。</p>
+<p>平时常用命令整理</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>git pull #同步更新<br>hexo new post “新建文章” #简写形式 hexo n “新建文章”<br>hexo clean #清除旧的public文件夹<br>hexo generate #生成静态文件 简写形式 hexo g<br>hexo deploy #发布到github上 简写形式 hexo d<br>git add . #添加更改文件到缓存区<br>git commit -m “更新说明” #提交到本地仓库<br>git push -u origin master #推送到远程仓库进行备份<br>Ending</p>
+<p>终于结束了。文章有点长，如果一气呵成的话，应该没有大问题。可能有一些地方粗略的提了一下，欢迎批评指正。</p>
+<p>转载请注明出处：<a href="http://eryouhao.github.io/2016/06/25/hello-hexo/" target="_blank" rel="external">http://eryouhao.github.io/2016/06/25/hello-hexo/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;【hello，hexo！】终于搞定了hexo博客多终端同步管理了，现整理出过程分享出来，同时自己也再顺一遍。如果有错误欢迎指正~。&lt;/p&gt;
+&lt;p&gt;软件与准备&lt;/p&gt;
+&lt;p&gt;1.node.js node.js中文网&lt;br&gt;2.git git官网 如果下载速度过慢，请移步百度下载，只是版本差异&lt;br&gt;3.文本编辑器，个人用的sublime text（其实用记事本也可以）&lt;br&gt;4.注册github帐号&lt;/p&gt;
+&lt;p&gt;安装node与git&lt;/p&gt;
+&lt;p&gt;上面的准备工作都完成后就可以进行软件安装了。&lt;/p&gt;
+&lt;p&gt;安装node 。直接双击下载下来的额msi文件，一路下一步就ok了，安装完之后调出命令行或者node命令输入终端，输入node -v看到版本信息就表明安装成功了。&lt;br&gt;安装git 。直接双击下载下来的git安装程序，同node安装，安装完之后右键发现多了两个Git GUI Here 、Git Bash Here，点击后者，然后输入git –version出现版本信息就表明安装成功了。&lt;br&gt;选装cnpm。由于npm速度有时候令人堪忧，所以建议安装淘宝源的cnpm，在git bash中输入下面整段&lt;/p&gt;
+&lt;p&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;4&lt;br&gt;alias cnpm=”npm –registry=&lt;a href=&quot;https://registry.npm.taobao.org&quot;&gt;https://registry.npm.taobao.org&lt;/a&gt; \&lt;br&gt;    –cache=$HOME/.npm/.cache/cnpm \&lt;br&gt;    –disturl=&lt;a href=&quot;https://npm.taobao.org/dist&quot;&gt;https://npm.taobao.org/dist&lt;/a&gt; \&lt;br&gt;    –userconfig=$HOME/.cnpmrc”&lt;br&gt;安装完之后验证，输入：cnpm info express,若出现一大堆信息则表明成功了&lt;/p&gt;
+&lt;p&gt;安装hexo&lt;/p&gt;
+&lt;p&gt;全局安装。在git bash 下输入：cnpm install -g hexo-cli&lt;br&gt;安装完之后，输入hexo -v，出现版本信息则表明安装成功&lt;br&gt;创建hexo项目。在g盘（你可以在任意盘，这里只是举个栗子^_^）新建一个文件夹hexo。进入到此文件夹右键点git bash，然后输入hexo init,走完命令行之后输入：cnpm install&lt;br&gt;安装完之后可以输入：hexo server启动本地服务器，在浏览器中输入：&lt;a href=&quot;http://localhost:4000/&quot;&gt;http://localhost:4000/&lt;/a&gt; 来访问hexo博客。&lt;br&gt;到此，本地搭建已经成功。&lt;br&gt;更换主题&lt;/p&gt;
+&lt;p&gt;这里我就不细说更换主题的内容了。太长了，有空单聊。&lt;/p&gt;
+&lt;p&gt;创建github pages与配置ssh&lt;/p&gt;
+&lt;p&gt;创建博客仓库。登陆到github上新建一个仓库，名称为：你的用户名.github.io&lt;br&gt;本地生成ssh密钥。git bash下输入ssh-keygen -t rsa -C “你的邮箱地址”&lt;br&gt;上传公钥串。在你的电脑C：\ Users\你的计算机用户名.ssh目录下打开刚刚生成的id_rsa.pub，复制里面的内容。然后在这里&lt;a href=&quot;https://github.com/settings/keys&quot;&gt;https://github.com/settings/keys&lt;/a&gt; 新建一个ssh key，title随便写，把公钥串粘贴到文本框，保存即可。&lt;br&gt;将本地博客同步到github上&lt;/p&gt;
+&lt;p&gt;安装必要插件。进入到本地的hexo目录，在git bash下分别输入cnpm install hexo -server –save 和cnpm install hexo-deployer-git –save&lt;br&gt;编辑博客配置文件：_config.yml,具体参考&lt;a href=&quot;https://hexo.io/zh-cn/docs/configuration.html&quot;&gt;https://hexo.io/zh-cn/docs/configuration.html&lt;/a&gt; （最重要的是配置deploy）&lt;br&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;4&lt;br&gt;deploy:&lt;br&gt;  type: git&lt;br&gt;  repo: git@github.com:你的github用户名/你的github用户名.github.io.git&lt;br&gt;  branch: master&lt;br&gt;重新部署。在git bash中依次执行 hexo clean（清除旧的public生成文件）hexo generate（或者hexo g 生成静态文件）hexo server（本地预览）hexo deploy（部署到github上，第一次会有弹框提示，输入yes，点击ok）&lt;br&gt;提交成功后就可以访问了，比如我的是：&lt;a href=&quot;http://eryouhao.github.io/&quot;&gt;http://eryouhao.github.io/&lt;/a&gt;&lt;br&gt;至此，博客搭建结束！可以稍微休息下，庆祝一下了~.&lt;br&gt;多PC同步管理博客&lt;/p&gt;
+&lt;p&gt;休息结束，下面干货来了。很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的。下面就介绍一下用github来备份博客并同步博客。&lt;/p&gt;
+&lt;p&gt;A电脑备份博客内容到github&lt;/p&gt;
+&lt;p&gt;配置.gitignore文件。进入博客目录文件夹下，找到此文件，用sublime text 打开，在最后增加两行内容/.deploy_git和/public&lt;br&gt;初始化仓库。在博客根目录下，在git bash下依次执行git init和git remote add origin &lt;server&gt; 为远程仓库地址。&lt;br&gt;同步到远程仓库。gitbash下依次执行以下命令&lt;br&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;git add . #添加目录下所有文件&lt;br&gt;git commit -m “更新说明” #提交并添加更新说明&lt;br&gt;git push -u origin master #推送更新到远程仓库&lt;br&gt;B电脑拉下远程仓库文件&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://it-lemon.cc/categories/hexo/"/>
+    
+      <category term="github" scheme="http://it-lemon.cc/categories/hexo/github/"/>
+    
+      <category term="blog" scheme="http://it-lemon.cc/categories/hexo/github/blog/"/>
+    
+    
+      <category term="hexo" scheme="http://it-lemon.cc/tags/hexo/"/>
+    
+      <category term="github" scheme="http://it-lemon.cc/tags/github/"/>
+    
+      <category term="blog" scheme="http://it-lemon.cc/tags/blog/"/>
+    
+  </entry>
+  
+</feed>
